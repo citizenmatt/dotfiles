@@ -1,0 +1,44 @@
+[user]
+	name = Matt Ellis
+	email = m.t.ellis@gmail.com
+	signingkey = FA6025D54131324B
+[core]
+	excludesfile = ~/dotfiles/gitignore_global
+    # See http://theunixtoolbox.com/git-diff-highlight/
+    pager = diff-highlight | less -r
+	autocrlf = input
+	untrackedCache = true
+[diff]
+	tool = bc3
+[difftool]
+	prompt = false
+[merge]
+	tool = bc3
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[push]
+	default = simple
+[color "status"]
+    header = normal
+    branch = yellow bold ul
+    added = green
+    # updated is a synonym for added, I think
+    changed = red
+    untracked = magenta
+    unmerged = red bold
+    nobranch = red ul
+# See https://github.com/paulirish/dotfiles/commit/6743b907ff586c28cd36e08d1e1c634e2968893e#diff-4723a3b40361325f6612c40749b696d9R53
+[color "diff-highlight"]
+    oldNormal = red bold
+    oldHighlight = red bold 52
+    newNormal = green
+    newHighlight = green 22
+[credential]
+	helper = osxkeychain
+[commit]
+	gpgsign = true

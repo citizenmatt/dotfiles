@@ -1,0 +1,81 @@
+" Causes problems with some mappings
+"source ~/.vim/_vimrc
+
+" See runtime/defaults.vim
+" vim 8.0+ adds runtime/defaults.vim that gets loaded if there is no .vimrc
+set history=200
+" set showcmd
+" set wildmenu
+set scrolloff=5
+set incsearch
+set nrformats-=octal
+" map Q gq
+
+
+
+" vim-sensible settings that work in IdeaVim
+" This would be applied from a .ideavimrc, in which case defaults.vim wouldn't be loaded
+"set nrformats-=octal
+"set incsearch
+nnoremap <silent> <C-L> :nohlsearch<CR>
+"set scrolloff=1
+set sidescrolloff=5
+"set history=1000   " overrides the 200 in defaults.vim
+
+
+" My stuff
+set clipboard^=unnamedplus,unnamed
+
+set hlsearch
+set ignorecase
+set smartcase
+set visualbell
+
+set showmode
+set number relativenumber
+
+
+" Emulate plugins
+set surround
+set multiple-cursors
+set commentary
+
+" <leader> is \
+nnoremap <leader><space> :nohlsearch<CR>
+
+" remap ctrl+shift+J to IDEA's smart join
+" nnoremap <C-J> :action EditorJoinLines<CR>
+set ideajoin
+" see also :set formatoptions+=j
+
+" Testing custom digraph support
+digraph \|- 8866
+" ⓪
+digraph (0 9450
+" ①
+digraph (1 9312
+" ②
+digraph (2 9313
+" ③
+digraph (3 9314
+" ④
+digraph (4 9315
+" ⑤
+digraph (5 9316
+" ⑥
+digraph (6 9317
+" ⑦
+digraph (7 9318
+" ⑧
+digraph (8 9319
+" ⑨
+digraph (9 9320
+" ❯
+digraph .> 10095
+" ↦
+digraph \|> 8614
+" ↩
+digraph hl 8617
+" ↪
+digraph hr 8618
+

@@ -1,0 +1,12 @@
+[ui]
+username = Matt Ellis <matt.ellis@jetbrains.com>
+
+[extensions]
+largefiles =
+eol =
+purge =
+mercurial_keyring =
+rebase =
+color =
+strip =
+progress =
