@@ -28,7 +28,7 @@ if [ -f $brew_prefix/opt/bash-git-prompt/share/gitprompt.sh ]; then
   # . ~/dotfiles/git-prompt-overrides.sh
 fi
 
-export HOMEBREW_GITHUB_API_TOKEN=e2c9cf74f2938ba60fed740e71d3c75e1e400b93
+# export HOMEBREW_GITHUB_API_TOKEN=
 
 # MenubarNotifier function
 # https://github.com/alexglasser/menubarnotifier

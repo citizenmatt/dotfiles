@@ -33,6 +33,7 @@ brew 'lz4'
 brew 'maven'
 brew 'mercurial'
 brew 'node'
+brew 'p7zip'
 brew 'pinentry-mac'
 brew 'ruby'
 brew 'sl'
@@ -60,7 +61,8 @@ brew 'brew-cask-completion'
 brew 'bundler-completion'
 brew 'docker-completion'
 brew 'docker-compose-completion'
-brew 'docker-machine-completion'
+# Already part of docker-machine
+# brew 'docker-machine-completion'
 brew 'gem-completion'
 brew 'maven-completion'
 brew 'open-completion'
@@ -78,13 +80,14 @@ cask '1password6'
 cask 'avibrazil-rdm'
 cask 'alfred'
 cask 'bartender'
+cask 'bbc-iplayer-downloads'
 cask 'beyond-compare'
 cask 'camtasia'
-# cask 'cd-to-item'
+# No longer supports iterm!?
+# cask 'cd-to'
 cask 'dash'
 cask 'deepl'
 cask 'discord'
-cask 'docker'
 cask 'dotnet-sdk'
 cask 'dropbox'
 cask 'freedome'
@@ -99,7 +102,9 @@ cask 'jd-gui'
 cask 'jetbrains-toolbox'
 cask 'keybase'
 cask 'logitech-presentation'
+cask 'mcgimp'
 cask 'openemu'
+cask 'openinterminal'
 cask 'p4v'
 cask 'parallels'
 cask 'pinta'
@@ -110,6 +115,7 @@ cask 'qlstephen'
 cask 'quicklook-json'
 cask 'rcdefaultapp'
 cask 'simple-comic'
+cask 'shortcutdetective'
 cask 'sizeup'
 cask 'skype'
 cask 'sloth'
@@ -124,6 +130,22 @@ cask 'vlc'
 cask 'yacreader'
 cask 'yed'
 cask 'yourkit-java-profiler'
+
+# Docker
+# I always forget what docker component does what. This is probably not the best place for this, but meh.
+# The docker cask installs Docker for Mac, aka Docker Desktop. This will install the command line tools on first run.
+# /usr/local/bin/docker, docker-compose, docker-credential-desktop, docker-credential-osxkeychain
+# Try `docker run -dp 80:80 docker/getting-started` and browsing to http://localhost
+# Default docker vm is stored in ~/Library/Containers/com.docker.docker
+# You can also use docker-machine with the docker-machine-parallels driver to host the docker vm in Parallels.
+# This works, but requires extra setup to get docker talking to that host
+cask 'docker'
+# brew 'docker-machine'
+# brew 'docker-machine-parallels'
+
+# Dotnet SDK
+tap 'isen-ng/homebrew-dotnet-sdk-versions'
+cask 'dotnet-sdk-2.1.800'
 
 # Fonts
 tap 'homebrew/cask-fonts'
@@ -140,7 +162,7 @@ cask 'font-victor-mono'
 tap 'colindean/fonts-nonfree'
 cask 'font-microsoft-office'
 
-# App Store
+# App Store - `mas list`
 mas 'DaisyDisk', id: 411643860
 mas 'OneDrive', id: 823766827
 mas 'Pocket', id: 568494494
@@ -152,3 +174,9 @@ mas 'WiFi Explorer Lite', id: 1408727408
 # Takes too long, with no visible progress
 # mas 'Xcode', id: 497799835
 
+# Safari extensions
+mas 'AdBlock', id: 1402042596
+mas 'AdBlock Plus', id: 1432731683
+mas 'Ghostery Lite', id: 1436953057
+mas 'Save to Pocket', id: 1477385213
+mas 'Tampermonkey', id: 1482490089
