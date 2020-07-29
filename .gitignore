@@ -1,2 +1,15 @@
 # I don't care what versions were installed
 Brewfile.lock.json
+
+# Might be easier to ignore config/ and add exlusions...
+config/ILSpy.xml
+config/NuGet/
+config/Pinta/
+config/configstore/
+config/gh/
+config/gtk-2.0/
+config/hub
+config/mono.addins/
+config/stetic/
+config/wireshark
+config/xbuild/
