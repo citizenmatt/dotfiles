@@ -39,7 +39,10 @@ nnoremap <leader><space> :nohlsearch<CR>
 
 
 " IdeaVim specific
+" Smart join for <C-J>
 set ideajoin
+" Map vim marks to IDEA global marks
+set ideamarks
 
 
 " Emulate plugins
@@ -59,7 +62,20 @@ set multiple-cursors
 set ReplaceWithRegister
 " entire buffer text object: ae
 set textobj-entire
+" no keys.
+set highlightedyank
 
+
+" Keys from vim-gitgutter
+nmap ]c :action VcsShowNextChangeMarker<CR>
+nmap [c :action VcsShowPrevChangeMarker<CR>
+
+" CamelCaseMotion
+" Missing inner word motions e.g. i<leader>w
+nmap <leader>w [w
+nmap <leader>b [b
+nmap <leader>e ]w
+nmap <leader>ge ]b
 
 " Testing custom digraph support
 digraph \|- 8866
