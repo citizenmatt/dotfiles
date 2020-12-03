@@ -15,6 +15,7 @@ brew 'bluetoothconnector'
 brew 'cmake'
 brew 'dos2unix'
 brew 'get_iplayer'
+brew 'gh'
 brew 'gifsicle'
 brew 'git'
 brew 'git-extras'
@@ -35,6 +36,7 @@ brew 'mercurial'
 brew 'node'
 brew 'p7zip'
 brew 'pinentry-mac'
+brew 'pngcrush'
 brew 'ruby'
 brew 'sl'
 brew 'source-highlight'
@@ -44,6 +46,7 @@ brew 'tree'
 brew 'unrar'
 brew 'yarn'
 brew 'youtube-dl'
+
 tap 'aws/tap'
 brew 'aws-sam-cli'
 brew 'awscli'
@@ -76,23 +79,23 @@ brew 'ruby-completion'
 cask 'visual-studio'
 cask 'mono-mdk'
 
-cask '1password6'
-cask 'avibrazil-rdm'
+cask '1password'
+# cask '1password6'
 cask 'alfred'
+cask 'avibrazil-rdm'
+cask 'backblaze'
 cask 'bartender'
 cask 'bbc-iplayer-downloads'
 cask 'beyond-compare'
 cask 'camtasia'
-# No longer supports iterm!?
-# cask 'cd-to'
 cask 'dash'
 cask 'deepl'
 cask 'discord'
 cask 'dotnet-sdk'
 cask 'dropbox'
+cask 'ferdi'
 cask 'freedome'
 cask 'github'
-cask 'gitkraken'
 cask 'gitter'
 cask 'google-chrome'
 cask 'haptickey'
@@ -111,7 +114,6 @@ cask 'pinta'
 cask 'powershell'
 cask 'qlcolorcode'
 cask 'qlmarkdown'
-cask 'qlstephen'
 cask 'quicklook-json'
 cask 'rcdefaultapp'
 cask 'simple-comic'
@@ -120,16 +122,24 @@ cask 'sizeup'
 cask 'skype'
 cask 'sloth'
 cask 'spotify'
-cask 'tunnelblick'
+cask 'suspicious-package'
 cask 'turbo-boost-switcher'
 cask 'ukelele'
 cask 'unity-hub'
-# cask 'unshaky'
 cask 'visual-studio-code'
 cask 'vlc'
 cask 'yacreader'
 cask 'yed'
 cask 'yourkit-java-profiler'
+
+# Maybes
+# cask 'bettertouchtool'
+# cask 'cd-to' # No longer supports iterm!?
+# cask 'gitkraken'
+# cask 'qlstephen' # Extension-less files. Handled by iPreview?
+# cask 'seashore'
+# cask 'tunnelblick'
+# cask 'unshaky'
 
 # Docker
 # I always forget what docker component does what. This is probably not the best place for this, but meh.
@@ -145,7 +155,7 @@ cask 'docker'
 
 # Dotnet SDK
 tap 'isen-ng/homebrew-dotnet-sdk-versions'
-cask 'dotnet-sdk-2.1.800'
+cask 'dotnet-sdk3-1-400'
 
 # Fonts
 tap 'homebrew/cask-fonts'
@@ -153,12 +163,17 @@ cask 'font-cascadia'
 cask 'font-consolas-for-powerline'
 cask 'font-fira-code'
 cask 'font-hasklig'
+casl 'font-iosevka'
+casl 'font-iosevka-aile'
+casl 'font-iosevka-etoile'
+casl 'font-iosevka-sparkle'
 cask 'font-jetbrains-mono'
 cask 'font-liberation-mono-for-powerline'
 cask 'font-noto-sans-cjk-kr'
 cask 'font-roboto'
 cask 'font-source-code-pro'
 cask 'font-victor-mono'
+
 tap 'colindean/fonts-nonfree'
 cask 'font-microsoft-office'
 
@@ -167,6 +182,7 @@ mas 'DaisyDisk', id: 411643860
 mas 'OneDrive', id: 823766827
 mas 'Pocket', id: 568494494
 mas 'Reeder', id: 1449412482
+mas 'Shazam', id: 897118787
 mas 'Slack', id: 803453959
 mas 'Things 3', id: 904280696
 mas 'Tweetbot', id: 1384080005
@@ -175,8 +191,11 @@ mas 'WiFi Explorer Lite', id: 1408727408
 # mas 'Xcode', id: 497799835
 
 # Safari extensions
-mas 'AdBlock', id: 1402042596
-mas 'AdBlock Plus', id: 1432731683
-mas 'Ghostery Lite', id: 1436953057
+mas 'AdGuard for Safari', id: 1440147259
+# mas 'AdBlock', id: 1402042596
+# mas 'AdBlock Plus', id: 1432731683
+# mas 'Ghostery Lite', id: 1436953057
+# mas 'Minimal Consent', id: 1514164630
 mas 'Save to Pocket', id: 1477385213
+mas 'Tab Space', id: 1473726602
 mas 'Tampermonkey', id: 1482490089
