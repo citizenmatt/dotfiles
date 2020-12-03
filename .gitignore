@@ -2,6 +2,7 @@
 Brewfile.lock.json
 
 # Might be easier to ignore config/ and add exlusions...
+config/.mono
 config/ILSpy.xml
 config/NuGet/
 config/Pinta/
