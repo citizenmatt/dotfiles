@@ -109,6 +109,7 @@ less()
 alias more=less
 export PAGER=less
 
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 # bash parameter completion for the dotnet CLI
 
@@ -126,3 +127,4 @@ _dotnet_bash_complete()
 }
 
 complete -f -F _dotnet_bash_complete dotnet
+source "$HOME/.cargo/env"
