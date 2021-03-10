@@ -45,7 +45,14 @@ set ideajoin
 set ideamarks
 
 
-" Emulate plugins
+""" IdeaVim actions
+" Keys from vim-gitgutter
+nmap ]c <Action>(VcsShowNextChangeMarker)
+nmap [c <Action>(VcsShowPrevChangeMarker)
+
+
+""" IdeaVIm plugins
+
 " argument text objects: aa, ia
 set argtextobj
 " gcc, gc + motion, v_gc

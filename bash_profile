@@ -18,7 +18,6 @@ brew_prefix=$(brew --prefix)
 PATH=$PATH:$brew_prefix/share/git-core/contrib/diff-highlight
 
 if [ -f $brew_prefix/share/bash-completion/bash_completion ]; then
-  export BASH_COMPLETION_COMPAT_DIR=/usr/local/etc/bash_completion.d
   . $brew_prefix/share/bash-completion/bash_completion
 fi
 
