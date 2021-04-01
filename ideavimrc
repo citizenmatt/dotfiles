@@ -1,8 +1,7 @@
 " Causes problems with some mappings
 "source ~/.vim/vimrc
 
-" See runtime/defaults.vim
-" vim 8.0+ adds runtime/defaults.vim that gets loaded if there is no .vimrc
+""" runtime/defaults.vim
 set history=200
 set showcmd
 " set wildmenu
@@ -13,17 +12,18 @@ map Q gq
 
 
 
-" vim-sensible settings that work in IdeaVim
-" This would be applied from a .ideavimrc, in which case defaults.vim wouldn't be loaded
+""" vim-sensible settings that work in IdeaVim
 "set nrformats-=octal
 "set incsearch
 nnoremap <silent> <C-L> :nohlsearch<CR>
-"set scrolloff=1
+"set scrolloff=1    " overrides the 5 in defaults.vim
 set sidescrolloff=5
 "set history=1000   " overrides the 200 in defaults.vim
 
 
-" My stuff
+
+
+""" My stuff
 set clipboard^=unnamedplus,unnamed
 
 set hlsearch
@@ -38,7 +38,13 @@ set number relativenumber
 nnoremap <leader><space> :nohlsearch<CR>
 
 
-" IdeaVim specific
+" Toggle case and start typing. E.g. `<leader>iget`: `property` -> `getProperty`
+nmap <leader>i ~hi
+" Remove selection and toggle case. E.g. `v2l<leader>u`: `getProperty` -> `property`
+vmap <leader>u d~h
+
+
+""" IdeaVim options
 " Smart join for <C-J>
 set ideajoin
 " Map vim marks to IDEA global marks
@@ -50,127 +56,61 @@ set ideamarks
 nmap ]c <Action>(VcsShowNextChangeMarker)
 nmap [c <Action>(VcsShowPrevChangeMarker)
 
+" Highlight the element under the caret, and use CMD+G/Shift+CMD+G to iterate over
+nmap gs <Action>(HighlightUsagesInFile)
+nmap ]q <Action>(GotoNextElementUnderCaretUsage)
+nmap [q <Action>(GotoPrevElementUnderCaretUsage)
 
-""" IdeaVIm plugins
+
+
+""" IdeaVim plugins
 
 " argument text objects: aa, ia
 set argtextobj
 " gcc, gc + motion, v_gc
 set commentary
-set easymotion
 " cx{motion} to select, again to exchange
 set exchange
+set highlightedyank
 " ys, cs, ds, S
 set surround
-" <A-n>, <A-x>, <A-p>, g<A-n>
-" Note that <A-n> doesn't work on Mac thanks to dead keys
-set multiple-cursors
 " [count]["x]gr{motion}, [count]["x]grr, {Visual}["x]gr
 set ReplaceWithRegister
 " entire buffer text object: ae
 set textobj-entire
-" no keys.
-set highlightedyank
+" Too many keys to mention...
+set easymotion
+
+" See below for remapped keys. <A-n> doesn't work on Mac
+" <A-n>, <A-x>, <A-p>, g<A-n>
+set multiple-cursors
 
 " Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
 nmap <C-n> <Plug>NextWholeOccurrence
 xmap <C-n> <Plug>NextWholeOccurrence
 nmap g<C-n> <Plug>NextOccurrence
 xmap g<C-n> <Plug>NextOccurrence
-nmap <C-x> <Plug>SkipOccurrence
 xmap <C-x> <Plug>SkipOccurrence
-nmap <C-p> <Plug>RemoveOccurrence
 xmap <C-p> <Plug>RemoveOccurrence
 
 " Note that the default <A-n> and g<A-n> shortcuts don't work on Mac due to dead keys.
 " <A-n> is used to enter accented text e.g. ñ
-nmap <S-C-n> <Plug>AllWholeOccurrences
-xmap <S-C-n> <Plug>AllWholeOccurrences
-nmap g<S-C-n> <Plug>AllOccurrences
-xmap g<S-C-n> <Plug>AllOccurrences
+nmap <leader><C-n> <Plug>AllWholeOccurrences
+xmap <leader><C-n> <Plug>AllWholeOccurrences
+nmap <leader>g<C-n> <Plug>AllOccurrences
+xmap <leader>g<C-n> <Plug>AllOccurrences
 
 
 
-" Keys from vim-gitgutter
-nmap ]c :action VcsShowNextChangeMarker<CR>
-nmap [c :action VcsShowPrevChangeMarker<CR>
 
-" CamelCaseMotion
+" CamelCaseMotion approximation (obsolete with proper CamelCaseMotoin plugin)
 " Missing inner word motions e.g. i<leader>w
 nmap <leader>w [w
 nmap <leader>b [b
 nmap <leader>e ]w
 nmap <leader>ge ]b
 
-" Testing custom digraph support
-digraph \|- 8866
-" ⓪
-digraph (0 9450
-" ①
-digraph (1 9312
-" ②
-digraph (2 9313
-" ③
-digraph (3 9314
-" ④
-digraph (4 9315
-" ⑤
-digraph (5 9316
-" ⑥
-digraph (6 9317
-" ⑦
-digraph (7 9318
-" ⑧
-digraph (8 9319
-" ⑨
-digraph (9 9320
-" ❯
-digraph .> 10095
-" ↦
-digraph \|> 8614
-" ↩
-digraph hl 8617
-" ↪
-digraph hr 8618
 
 
-" To only apply these macros in e.g. Python files, prepend 'autocmd FileType py', e.g.:
-" autocmd FileType py inoremap \mu μ (currently unsupported in IdeaVim)
-
-inoremap \alpha α
-inoremap \beta β
-inoremap \gamma γ
-inoremap \delta δ
-inoremap \epsilon ε
-inoremap \zeta ζ
-inoremap \eta η
-inoremap \theta θ
-inoremap \iota ι
-inoremap \kappa κ
-inoremap \lambda λ
-inoremap \mu μ
-inoremap \nu ν
-inoremap \xi ξ
-inoremap \pi π
-inoremap \rho ρ
-inoremap \sigma σ
-inoremap \tau τ
-inoremap \upsilon υ
-inoremap \phi φ
-inoremap \chi χ
-inoremap \psi ψ
-inoremap \omega ω
-
-inoremap \Gamma Γ
-inoremap \Delta Δ
-inoremap \Lambda Λ
-inoremap \Xi Ξ
-inoremap \Pi Π
-inoremap \Sigma Σ
-inoremap \Upsilon ϒ
-inoremap \Phi Φ
-inoremap \Psi Ψ
-inoremap \Omega Ω
-
-inoremap \nabla ∇
-inoremap \partial ∂
+""" IdeaVim development stuff
+set ideastrictmode
