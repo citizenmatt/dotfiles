@@ -1,1 +1,20 @@
 set editing-mode vi
+
+# Show Vi mode in prompt
+set show-mode-in-prompt on
+
+# Update prompt and cursor shape based on mode
+# 0 - blinking block
+# 1 - blinking block (default)
+# 2 - steady block
+# 3 - blinking underline
+# 4 - steady underline
+# 5 - blinking bar
+# 6 - steady bar
+set vi-cmd-mode-string "\1\e[1 q\2(cmd) "
+set vi-ins-mode-string "\1\e[5 q\2"
+
+# Show completion with highlighted prefix and file type
+set colored-completion-prefix on
+set colored-stats on
+set visible-stats on
