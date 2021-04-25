@@ -61,6 +61,12 @@ nmap gs <Action>(HighlightUsagesInFile)
 nmap ]q <Action>(GotoNextElementUnderCaretUsage)
 nmap [q <Action>(GotoPrevElementUnderCaretUsage)
 
+nmap gD <Action>(GotoTypeDeclaration)
+
+nmap gl <Action>(QuickJavaDoc)
+nmap gL <Action>(QuickImplementations)
+nmap gy <Action>(ShowErrorDescription)
+
 
 
 """ IdeaVim plugins
@@ -79,6 +85,7 @@ set ReplaceWithRegister
 " entire buffer text object: ae
 set textobj-entire
 " Too many keys to mention...
+
 set easymotion
 
 " See below for remapped keys. <A-n> doesn't work on Mac
