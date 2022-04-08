@@ -14,11 +14,6 @@
 	prompt = false
 [merge]
 	tool = bc3
-[filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [push]
@@ -44,3 +39,14 @@
 	gpgsign = true
 [pull]
 	rebase = false
+[init]
+	defaultBranch = main
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[scalar]
+	repo = /Users/matt/IdeaProjects/intellij
+[maintenance]
+	repo = /Users/matt/IdeaProjects/intellij
