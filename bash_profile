@@ -126,7 +126,6 @@ _dotnet_bash_complete()
 }
 
 complete -f -F _dotnet_bash_complete dotnet
-source "$HOME/.cargo/env"
 
 # Executed after reading a command and before executing it. Will restore the cursor to a block
 export PS0="\e[2 q"
