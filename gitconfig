@@ -4,16 +4,35 @@
 	signingkey = FA6025D54131324B
 [core]
 	excludesfile = ~/dotfiles/gitignore_global
-    # See http://theunixtoolbox.com/git-diff-highlight/
-    pager = diff-highlight | less -r
+    # https://git.kernel.org/pub/scm/git/git.git/tree/contrib/diff-highlight/README
+    # See also: https://github.com/so-fancy/diff-so-fancy
+    # and: https://github.com/dandavison/delta
+    # and: https://github.com/mookid/diffr
+    #pager = diff-highlight | less -r
+    #pager = delta
+    pager = diffr --colors refine-added:none:background:0x33,0x99,0x33:bold --colors added:none:background:0x33,0x55,0x33 --colors refine-removed:none:background:0x99,0x33,0x33:bold --colors removed:none:background:0x55,0x33,0x33 | less -r
 	autocrlf = input
 	untrackedCache = true
 [diff]
 	tool = bc3
+    colorMoved = default
+
+    # difftastic - https://difftastic.wilfred.me.uk/git.html
+    #external = difft
 [difftool]
 	prompt = false
+# git difftool -t difftastic XXX
+[difftool "difftastic"]
+    cmd = difft "$LOCAL" "$REMOTE"
 [merge]
 	tool = bc3
+# Can't get this to work?
+[interactive]
+    diffFilter = diffr --colors refine-added:none:background:0x33,0x99,0x33:bold --colors added:none:background:0x33,0x55,0x33 --colors refine-removed:none:background:0x99,0x33,0x33:bold --colors removed:none:background:0x55,0x33,0x33 
+    #diffFilter = delta --color-only
+[delta]
+    navigate = true
+
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [push]
@@ -27,7 +46,7 @@
     untracked = magenta
     unmerged = red bold
     nobranch = red ul
-# See https://github.com/paulirish/dotfiles/commit/6743b907ff586c28cd36e08d1e1c634e2968893e#diff-4723a3b40361325f6612c40749b696d9R53
+# Nicer colours from: https://github.com/paulirish/dotfiles/commit/6743b907ff586c28cd36e08d1e1c634e2968893e#diff-4723a3b40361325f6612c40749b696d9R53
 [color "diff-highlight"]
     oldNormal = red bold
     oldHighlight = red bold 52
