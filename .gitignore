@@ -4,12 +4,22 @@ Brewfile.lock.json
 # Might be easier to ignore config/ and add exlusions...
 config/.mono
 config/ILSpy.xml
+config/JetBrains/PermanentDeviceId
+config/JetBrains/PermanentUserId
+config/JetBrains/Rider/
+config/JetBrains/RiderFlow/
+config/JetBrains/Tests**
+config/JetBrains/feature_usage_event_log_salt
 config/NuGet/
 config/Pinta/
+config/RiderFlow/
+config/SpecFlow/
+config/Unreal Engine/
 config/configstore/
 config/gh/
 config/gtk-2.0/
 config/hub
+config/iterm2
 config/mono.addins/
 config/stetic/
 config/wireshark
