@@ -12,6 +12,8 @@ alias ls="ls -F"
 export PATH=/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.7.0/bin:$PATH
 export PATH=~/bin:/usr/local/bin:$PATH
 
+export PATH=~/go/bin:$PATH
+
 brew_prefix=$(brew --prefix)
 
 # For diff-highlight. See http://theunixtoolbox.com/git-diff-highlight/
@@ -129,3 +131,26 @@ complete -f -F _dotnet_bash_complete dotnet
 
 # Executed after reading a command and before executing it. Will restore the cursor to a block
 export PS0="\e[2 q"
+eval export PATH="/Users/matt/.jenv/shims:${PATH}"
+export JENV_SHELL=bash
+export JENV_LOADED=1
+unset JAVA_HOME
+source '/usr/local/Cellar/jenv/0.5.4/libexec/libexec/../completions/jenv.bash'
+jenv rehash 2>/dev/null
+jenv refresh-plugins
+jenv() {
+  typeset command
+  command="$1"
+  if [ "$#" -gt 0 ]; then
+    shift
+  fi
+
+  case "$command" in
+  enable-plugin|rehash|shell|shell-options)
+    eval `jenv "sh-$command" "$@"`;;
+  *)
+    command jenv "$command" "$@";;
+  esac
+}
+
+
