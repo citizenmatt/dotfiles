@@ -13,14 +13,12 @@ map Q gq
 
 
 """ vim-sensible settings that work in IdeaVim
-"set nrformats-=octal
-"set incsearch
+set nrformats-=octal
+set incsearch
 nnoremap <silent> <C-L> :nohlsearch<CR>
-"set scrolloff=1    " overrides the 5 in defaults.vim
+set scrolloff=5    " vim-sensible overrides to 1 if not set, but set in defaults.vim
 set sidescrolloff=5
-"set history=1000   " overrides the 200 in defaults.vim
-
-
+set history=1000   " overrides the 200 in defaults.vim
 
 
 """ My stuff
