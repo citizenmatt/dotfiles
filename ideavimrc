@@ -86,26 +86,17 @@ nmap <leader>x <Action>(HideAllWindows)
 
 """ IdeaVim plugins
 
-" argument text objects: aa, ia
-set argtextobj
-" gcc, gc + motion, v_gc
-set commentary
-" cx{motion} to select, again to exchange
-set exchange
-set highlightedyank
-" ys, cs, ds, S
-set surround
-" [count]["x]gr{motion}, [count]["x]grr, {Visual}["x]gr
-set ReplaceWithRegister
-" entire buffer text object: ae
-set textobj-entire
-" Too many keys to mention...
+packadd matchit		" Extended matching. Supports % (matching motion) and g% (reverse motion)
 
-set easymotion
-
-" See below for remapped keys. <A-n> doesn't work on Mac
-" <A-n>, <A-x>, <A-p>, g<A-n>
-set multiple-cursors
+Plug 'easymotion/vim-easymotion'	# Requires IdeaVim-EasyMotion. Lots of mappings
+Plug 'kana/vim-textobj-entire'		# entire buffer text object: ae
+Plug 'machakann/vim-highlightedyank'
+Plug 'terryma/vim-multiple-cursors'	# See below for remapped keys. <A-n> doesn't work on Mac
+Plug 'tommcdo/vim-exchange'		    # cx{motion} to select, again to exchange
+Plug 'tpope/vim-commentary'		    # [count]gc{motion}, o_gc, v_gc, gcc
+Plug 'tpope/vim-surround'		    # ys, cs, ds, S
+Plug 'vim-scripts/argtextobj.vim'	    # argument text objects: aa, ia
+Plug 'vim-scripts/ReplaceWithRegister'  # [count]["x]gr{motion}, [count]["x]grr, {Visual}["x]gr
 
 " Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
 nmap <C-n> <Plug>NextWholeOccurrence
