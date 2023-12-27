@@ -20,7 +20,6 @@ set scrolloff=5    " vim-sensible overrides to 1 if not set, but set in defaults
 set sidescrolloff=5
 set history=1000   " overrides the 200 in defaults.vim
 
-
 """ My stuff
 set clipboard^=unnamedplus,unnamed
 
@@ -42,6 +41,16 @@ nmap <leader>i ~hi
 vmap <leader>u d~h
 
 
+" Vim treats <Enter> just like <Down>. <S-Down> will scroll the window [count] pages forward, and so should <S-Enter>
+" See VIM-2752
+" nmap <S-Enter> <C-F>
+
+" Not sure if shift+backspace is correct in NORMAL
+" nnoremap <S-Backspace> B
+
+" Eh? What's this?
+" CTRL-Insert	copy Visual text (to clipboard)			*<C-Insert>*
+
 """ IdeaVim options
 " Smart join for <C-J>
 set ideajoin
@@ -58,6 +67,9 @@ nmap ]c <Action>(VcsShowNextChangeMarker)
 nmap [c <Action>(VcsShowPrevChangeMarker)
 " Not from vim-gitgutter. ={motion} is for indenting. =c does nothing
 nmap =c <Action>(VcsShowCurrentChangeMarker)
+
+nmap ]e <Action>(GotoNextError)
+nmap [e <Action>(GotoPreviousError)
 
 " These don't work in Rider, annoyingly. Try HighlightUsagesInFile (see <leader>h below)
 nmap ]q <Action>(GotoNextElementUnderCaretUsage)
@@ -81,6 +93,7 @@ nmap <leader>s <Action>(ShowUsages)
 nmap <leader>t <Action>(TypeHierarchy)
 nmap <leader>u <Action>(FindUsages)
 nmap <leader>v <Action>(Vcs.QuickListPopupAction)
+nmap <Leader>w <action>(ActiveToolwindowGroup)
 nmap <leader>x <Action>(HideAllWindows)
 
 
@@ -113,15 +126,37 @@ xmap <leader><C-n> <Plug>AllWholeOccurrences
 nmap <leader>g<C-n> <Plug>AllOccurrences
 xmap <leader>g<C-n> <Plug>AllOccurrences
 
+" Requires IdeaVim-Sneak plugin (port of ideavim-sneak)
+" Replaces s and S to search forwards/backwards with 2 chars. ; and , to repeat
+set sneak
+
+" Requires IdeaVim-QuickScope plugin (port of quick-scope)
+" Docs say to ensure that `set quickscope` is placed after `set sneak` (not sure why)
+" Replaces f/F and t/T to show highlights
+set quickscope
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+" Default colours are EditorColors.REFERENCE_HYPERLINK_COLOR + brighter()
+" let g:qs_primary_color = '#ff0000'
+" let g:qs_secondary_color = '#ff00ff'
 
 
-
-" CamelCaseMotion approximation (obsolete with proper CamelCaseMotoin plugin)
+" CamelCaseMotion approximation (obsolete with WIP proper CamelCaseMotoin plugin)
 " Missing inner word motions e.g. i<leader>w
 nmap <leader>w [w
 nmap <leader>b [b
 nmap <leader>e ]w
 nmap <leader>ge ]b
+" let g:camelcasemotion_key='<leader>'
+" set CamelCaseMotion
+
+" CCM's inner motions are a bit weird. Arguably, they should be an actual text object,
+" like how vim-text-obj-variable-segment does it. On the other hand v[count]i\b can't
+" be done without a motion. These maps give us best of both worlds
+" xnoremap iv i\e
+" onoremap iv i\e
+" xnoremap av i\w
+" onoremap av i\w
+
 
 
 function! Invert(calledFromVisual)
@@ -154,3 +189,102 @@ vnoremap ! :<C-u>call Invert(1)<CR>
 
 """ IdeaVim development stuff
 set ideastrictmode
+cmap ] <Insert>
+cmap <Tab> <nop>
+
+" Testing various things
+"imap <A-a> alt-lower
+"imap <A-A> alt-upper
+"imap <M-b> meta-lower
+"imap <M-B> meta-upper
+"imap <D-c> command-lower
+"imap <D-D> command-upper
+"imap <S-e> shift-lower
+"imap <S-F> shift-upper
+"imap a lower
+"imap A upper
+"imap <C-a> ctrl-lower
+"imap <C-A> ctrl-upper
+"imap <F9> fn9
+"imap <S-F9> shift+fn9
+"imap <C-S-F9> ctrl+shift+fn9
+
+" I think there are some bugs with when we sound the error bell
+" set novb
+" set nornu
+" set so=0
+
+
+""" WIP: Custom digraph support
+
+" digraph \|- 8866
+" ⓪
+digraph (0 9450
+" ①
+digraph (1 9312
+" ②
+digraph (2 9313
+" ③
+digraph (3 9314
+" ④
+digraph (4 9315
+" ⑤
+digraph (5 9316
+" ⑥
+digraph (6 9317
+" ⑦
+digraph (7 9318
+" ⑧
+digraph (8 9319
+" ⑨
+digraph (9 9320
+" ❯
+digraph .> 10095
+" ↦
+digraph \|> 8614
+" ↩
+digraph hl 8617
+" ↪
+digraph hr 8618
+
+
+" To only apply these macros in e.g. Python files, prepend 'autocmd FileType py', e.g.:
+" autocmd FileType py inoremap \mu μ (currently unsupported in IdeaVim)
+
+" inoremap \alpha α
+" inoremap \beta β
+" inoremap \gamma γ
+" inoremap \delta δ
+" inoremap \epsilon ε
+" inoremap \zeta ζ
+" inoremap \eta η
+" inoremap \theta θ
+" inoremap \iota ι
+" inoremap \kappa κ
+" inoremap \lambda λ
+" inoremap \mu μ
+" inoremap \nu ν
+" inoremap \xi ξ
+" inoremap \pi π
+" inoremap \rho ρ
+" inoremap \sigma σ
+" inoremap \tau τ
+" inoremap \upsilon υ
+" inoremap \phi φ
+" inoremap \chi χ
+" inoremap \psi ψ
+" inoremap \omega ω
+
+" inoremap \Gamma Γ
+" inoremap \Delta Δ
+" inoremap \Lambda Λ
+" inoremap \Xi Ξ
+" inoremap \Pi Π
+" inoremap \Sigma Σ
+" inoremap \Upsilon ϒ
+" inoremap \Phi Φ
+" inoremap \Psi Ψ
+" inoremap \Omega Ω
+
+" inoremap \nabla ∇
+" inoremap \partial ∂
