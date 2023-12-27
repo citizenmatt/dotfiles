@@ -13,6 +13,7 @@ export PATH=/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.7.0/bin:$PATH
 export PATH=~/bin:/usr/local/bin:$PATH
 
 export PATH=~/go/bin:$PATH
+export PATH=/usr/local/anaconda3/bin:$PATH
 
 brew_prefix=$(brew --prefix)
 
@@ -111,6 +112,7 @@ alias more=less
 export PAGER=less
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export DOTNET_INTERACTIVE_CLI_TELEMETRY_OPTOUT=1
 
 # bash parameter completion for the dotnet CLI
 
@@ -131,26 +133,6 @@ complete -f -F _dotnet_bash_complete dotnet
 
 # Executed after reading a command and before executing it. Will restore the cursor to a block
 export PS0="\e[2 q"
-eval export PATH="/Users/matt/.jenv/shims:${PATH}"
-export JENV_SHELL=bash
-export JENV_LOADED=1
-unset JAVA_HOME
-source '/usr/local/Cellar/jenv/0.5.4/libexec/libexec/../completions/jenv.bash'
-jenv rehash 2>/dev/null
-jenv refresh-plugins
-jenv() {
-  typeset command
-  command="$1"
-  if [ "$#" -gt 0 ]; then
-    shift
-  fi
 
-  case "$command" in
-  enable-plugin|rehash|shell|shell-options)
-    eval `jenv "sh-$command" "$@"`;;
-  *)
-    command jenv "$command" "$@";;
-  esac
-}
-
-
+# Use 1Password for SSH. It's all automatic, based on ~/.ssh/config, but this allows ssh-add -l to work
+export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
