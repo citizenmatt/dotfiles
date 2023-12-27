@@ -11,27 +11,36 @@ brew 'autoconf'
 brew 'automake'
 brew 'bash'
 brew 'bash-git-prompt'
-brew 'bluetoothconnector'
+# brew 'bluetoothconnector'
+# brew 'blueutil'
 brew 'cmake'
+# brew 'coreutils'
+brew 'cscope'
+brew 'curl'
+brew 'diffr'
 brew 'difftastic'
 brew 'dos2unix'
 brew 'get_iplayer'
 brew 'gh'
 brew 'gifsicle'
 brew 'git'
+brew 'git-delta'
 brew 'git-extras'
 brew 'git-lfs'
 # brew 'git-subrepo'
-brew 'git-utils'	# Conflicts with git-extras and removes it. git-extras is more important
 brew 'gnupg'
+brew 'gnuplot'
+brew 'go'
 brew 'gradle'
 brew 'grc'
 brew 'grep'
-brew 'hub'
+# brew 'hub'    # Mostly replace by 'gh'
 brew 'jenv'
 brew 'jq'
+brew 'jupyterlab'
 brew 'lesspipe'
-brew 'lsusb'
+# brew 'lsusb'
+brew 'lnav'
 brew 'lz4'
 brew 'maven'
 brew 'mercurial'
@@ -46,7 +55,8 @@ brew 'source-highlight'
 brew 'telnet'
 brew 'tmux'
 brew 'tree'
-brew 'unrar'
+brew 'unar'
+brew 'wget'
 brew 'yarn'
 brew 'youtube-dl'
 brew 'yt-dlp'
@@ -54,13 +64,6 @@ brew 'yt-dlp'
 tap 'aws/tap'
 brew 'aws-sam-cli'
 brew 'awscli'
-
-# Conflicts
-# These packages conflict, and git-utils will be unlinked
-# Make sure to brew link --overwrite git-utils after
-# git-extras is more important (git-incoming, etc.)
-brew 'git-utils'
-brew 'git-extras'
 
 # Completion packages
 brew 'bash-completion@2'
@@ -78,14 +81,12 @@ brew 'rake-completion'
 brew 'ruby-completion'
 
 # Casks
-# Must come before anyone else using mono-mdk, as it installs its own version
-# which is older. Installing mono-mdk will install the up to date version
-cask 'visual-studio'
-cask 'mono-mdk'
 
 cask '1password'
-# cask '1password6'
-cask 'alfred'
+cask '1password-cli'
+# cask 'alfred'
+cask "apparency"
+cask "audacity"
 cask 'avibrazil-rdm'
 cask 'backblaze'
 cask 'bartender'
@@ -97,55 +98,69 @@ cask 'deepl'
 cask 'discord'
 cask 'dotnet-sdk'
 cask 'dropbox'
-cask 'ferdi'
+cask 'epic-games'
+cask "filemon"
+cask 'fork'
 cask 'freedome'
 cask 'github'
-cask 'gitter'
 cask 'google-chrome'
-cask 'haptickey'
-# cask 'hyperdock'
-# Either dockview or dockmate. Both paid, appstore?
-# Or just use App Expose on the dock icon - but this doesn't show full screen windows
+cask "google-drive"
+cask "hot"
 cask 'hyperswitch'
+cask 'ilspy'
 cask 'jd-gui'
 cask 'jetbrains-toolbox'
-cask 'keybase'
 cask 'logitech-presentation'
 cask 'mcgimp'
-cask 'openemu'
+cask 'mono-mdk'
+cask 'onedrive'
+# cask 'openemu'
+cask "openemu-experimental"
 cask 'openinterminal'
 cask 'p4v'
-cask 'parallels'
+# cask 'parallels'
 cask 'pinta'
 cask 'powershell'
 cask 'qlcolorcode'
 cask 'qlmarkdown'
 cask 'quicklook-json'
-cask 'rcdefaultapp'
-cask 'simple-comic'
+cask "rocket"
 cask 'shortcutdetective'
+cask "signal"
+cask 'simple-comic'
 cask 'sizeup'
 cask 'skype'
 cask 'sloth'
 cask 'spotify'
+cask 'steam'
 cask 'suspicious-package'
-cask 'turbo-boost-switcher'
+cask 'swish'
+cask "the-unarchiver"
 cask 'ukelele'
 cask 'unity-hub'
 cask 'visual-studio-code'
 cask 'vlc'
+cask "wireshark"
 cask 'yacreader'
 cask 'yed'
 cask 'yourkit-java-profiler'
 
 # Maybes
+# cask 'anaconda'
+# cask 'betterdisplay'
 # cask 'bettertouchtool'
-# cask 'cd-to' # No longer supports iterm!?
+# cask 'dockview' # or 'dockmate' - replacing hyperdock
 # cask 'gitkraken'
+# cask 'krita'
+# cask 'multitouch'
 # cask 'qlstephen' # Extension-less files. Handled by iPreview?
+# cask 'rar'
+# cask 'rcdefaultapp'
 # cask 'seashore'
+# cask "skitch"
 # cask 'tunnelblick'
 # cask 'unshaky'
+# cask "xquartz"
 
 # Docker
 # I always forget what docker component does what. This is probably not the best place for this, but meh.
@@ -161,14 +176,17 @@ cask 'docker'
 
 # Dotnet SDK
 tap 'isen-ng/homebrew-dotnet-sdk-versions'
-cask 'dotnet-sdk3-1-400'
+cask "dotnet-sdk6-0-400"
+cask "dotnet-sdk7-0-400"
 
 # Fonts
 tap 'homebrew/cask-fonts'
+cask 'font-arial'
 cask 'font-cascadia-code'
 cask 'font-consolas-for-powerline'
 cask 'font-fira-code'
 cask 'font-hasklig'
+cask "font-inter"
 casl 'font-iosevka'
 casl 'font-iosevka-aile'
 casl 'font-iosevka-etoile'
@@ -176,6 +194,7 @@ casl 'font-iosevka-sparkle'
 cask 'font-jetbrains-mono'
 cask 'font-liberation-mono-for-powerline'
 cask 'font-noto-sans-cjk-kr'
+cask "font-open-sans"
 cask 'font-roboto'
 cask 'font-source-code-pro'
 cask 'font-victor-mono'
@@ -184,14 +203,14 @@ tap 'colindean/fonts-nonfree'
 cask 'font-microsoft-office'
 
 # App Store - `mas list`
+mas "1Password 7", id: 1333542190
 mas 'DaisyDisk', id: 411643860
 mas 'OneDrive', id: 823766827
 mas 'Pocket', id: 568494494
 mas 'Reeder', id: 1449412482
 mas 'Shazam', id: 897118787
 mas 'Slack', id: 803453959
-mas 'Things 3', id: 904280696
-mas 'Tweetbot', id: 1384080005
+mas 'Things', id: 904280696
 mas 'WiFi Explorer Lite', id: 1408727408
 # Takes too long, with no visible progress
 # mas 'Xcode', id: 497799835
@@ -203,5 +222,24 @@ mas 'AdGuard for Safari', id: 1440147259
 # mas 'Ghostery Lite', id: 1436953057
 # mas 'Minimal Consent', id: 1514164630
 mas 'Save to Pocket', id: 1477385213
-mas 'Tab Space', id: 1473726602
+# mas 'Tab Space', id: 1473726602
 mas 'Tampermonkey', id: 1482490089
+
+
+# VS Code extensions
+vscode "dfranx.shadered"
+vscode "ms-azuretools.vscode-docker"
+vscode "ms-dotnettools.csharp"
+vscode "ms-dotnettools.dotnet-interactive-vscode"
+vscode "ms-dotnettools.vscode-dotnet-runtime"
+vscode "ms-python.python"
+vscode "ms-python.vscode-pylance"
+vscode "ms-toolsai.jupyter"
+vscode "ms-toolsai.jupyter-keymap"
+vscode "ms-toolsai.jupyter-renderers"
+vscode "ms-toolsai.vscode-jupyter-cell-tags"
+vscode "ms-toolsai.vscode-jupyter-slideshow"
+vscode "ms-vscode-remote.remote-containers"
+vscode "simplisticproductions.unity-logcat"
+vscode "slevesque.shader"
+vscode "vscodevim.vim"
