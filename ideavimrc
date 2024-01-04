@@ -40,6 +40,13 @@ nmap <leader>i ~hi
 " Remove selection and toggle case. E.g. `v2l<leader>u`: `getProperty` -> `property`
 vmap <leader>u d~h
 
+" Changes the word under the cursor, such that `.` will repeat with the next occurrence of the word
+nnoremap <leader>j *``cgn
+
+" 'Fighting Kirby' regex. Capture the current word so it can be used in back references
+" E.g. :%s/\".*\"/[\1](https://google.co.uk?q=\1)
+cnoremap <F2> \(.*\)
+
 
 " Vim treats <Enter> just like <Down>. <S-Down> will scroll the window [count] pages forward, and so should <S-Enter>
 " See VIM-2752
@@ -78,17 +85,24 @@ nmap [q <Action>(GotoPrevElementUnderCaretUsage)
 nmap gb <Action>(Back)
 nmap gD <Action>(GotoTypeDeclaration)
 nmap gf <Action>(Forward)
-nmap gl <Action>(QuickJavaDoc)
+nmap gh <Action>(ShowHoverInfo)
+" nmap gl <Action>(QuickJavaDoc)
 nmap gL <Action>(QuickImplementations)
-nmap gy <Action>(ShowErrorDescription)
+" nmap gy <Action>(ShowErrorDescription)
 
 nmap <leader>b <Action>(ToggleLineBreakpoint)
-nmap <leader>c <Action>(CallHierarchy)
+if &ide =~? 'rider'
+  nmap <leader>c <Action>(RiderShowIncomingCalls)
+else
+  nmap <leader>c <Action>(CallHierarchy)
+endif
 " Highlight usages, use CMD+G/Shift+CMD+G to iterate
 nmap <leader>h <Action>(HighlightUsagesInFile)
 nmap <leader>n <Action>(ReSharperNavigateTo)
+nmap <leader>p <Action>(ParameterInfo)
 nmap <leader>q <Action>(ToggleRenderedDocPresentation)
 nmap <leader>r <Action>(Refactorings.QuickListPopupAction)
+xmap <leader>r <Action>(Refactorings.QuickListPopupAction)
 nmap <leader>s <Action>(ShowUsages)
 nmap <leader>t <Action>(TypeHierarchy)
 nmap <leader>u <Action>(FindUsages)
@@ -96,20 +110,27 @@ nmap <leader>v <Action>(Vcs.QuickListPopupAction)
 nmap <Leader>w <action>(ActiveToolwindowGroup)
 nmap <leader>x <Action>(HideAllWindows)
 
+nmap <C-j> <Action>(MoveLineDown)
+xmap <C-j> <Action>(MoveLineDown)
+nmap <C-k> <Action>(MoveLineUp)
+xmap <C-k> <Action>(MoveLineUp)
+
+command Wrap action EditorToggleUseSoftWraps
+
 
 """ IdeaVim plugins
 
 packadd matchit		" Extended matching. Supports % (matching motion) and g% (reverse motion)
 
-Plug 'easymotion/vim-easymotion'	# Requires IdeaVim-EasyMotion. Lots of mappings
-Plug 'kana/vim-textobj-entire'		# entire buffer text object: ae
+Plug 'easymotion/vim-easymotion'	" Requires IdeaVim-EasyMotion. Lots of mappings
+Plug 'kana/vim-textobj-entire'		" entire buffer text object: ae
 Plug 'machakann/vim-highlightedyank'
-Plug 'terryma/vim-multiple-cursors'	# See below for remapped keys. <A-n> doesn't work on Mac
-Plug 'tommcdo/vim-exchange'		    # cx{motion} to select, again to exchange
-Plug 'tpope/vim-commentary'		    # [count]gc{motion}, o_gc, v_gc, gcc
-Plug 'tpope/vim-surround'		    # ys, cs, ds, S
-Plug 'vim-scripts/argtextobj.vim'	    # argument text objects: aa, ia
-Plug 'vim-scripts/ReplaceWithRegister'  # [count]["x]gr{motion}, [count]["x]grr, {Visual}["x]gr
+Plug 'terryma/vim-multiple-cursors'	" See below for remapped keys. <A-n> doesn't work on Mac
+Plug 'tommcdo/vim-exchange'		    " cx{motion} to select, again to exchange
+Plug 'tpope/vim-commentary'		    " [count]gc{motion}, o_gc, v_gc, gcc
+Plug 'tpope/vim-surround'		    " ys, cs, ds, S
+Plug 'vim-scripts/argtextobj.vim'	    " argument text objects: aa, ia
+Plug 'vim-scripts/ReplaceWithRegister'  " [count][{reg}]gr{motion}, [count][{reg}]grr, {Visual}[{reg}]gr
 
 " Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
 nmap <C-n> <Plug>NextWholeOccurrence
@@ -135,9 +156,6 @@ set sneak
 " Replaces f/F and t/T to show highlights
 set quickscope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-" Default colours are EditorColors.REFERENCE_HYPERLINK_COLOR + brighter()
-" let g:qs_primary_color = '#ff0000'
-" let g:qs_secondary_color = '#ff00ff'
 
 
 " CamelCaseMotion approximation (obsolete with WIP proper CamelCaseMotoin plugin)
@@ -180,6 +198,13 @@ function! Invert(calledFromVisual)
     endif
     let count += 1
   endwhile
+endfunction
+
+nnoremap gX :set opfunc=Redact<CR>g@
+nnoremap gx :set opfunc=function('Redact')<CR>g@
+nnoremap gy :set opfunc={arg -> execute "normal `[v`]rx"}<CR>g@
+function! Redact(type)
+    execute "normal `[v`]rx"
 endfunction
 
 nnoremap ! :call Invert(0)<CR>
