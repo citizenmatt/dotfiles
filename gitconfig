@@ -13,11 +13,15 @@
     pager = diffr --colors refine-added:none:background:0x33,0x99,0x33:bold --colors added:none:background:0x33,0x55,0x33 --colors refine-removed:none:background:0x99,0x33,0x33:bold --colors removed:none:background:0x55,0x33,0x33 | less -r
 	autocrlf = input
     fsmonitor = true
+	untrackedCache = true
 [feature]
     manyFiles = true
 [diff]
 	tool = bc3
-    colorMoved = default
+	colorMoved = plain
+	algorithm = histogram
+	mnemonicPrefix = true
+	renames = true
 
     # difftastic - https://difftastic.wilfred.me.uk/git.html
     #external = difft
@@ -60,8 +64,11 @@
     newHighlight = green 22
 [credential]
 	helper = osxkeychain
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
 [commit]
 	gpgsign = true
+	verbose = true
 [pull]
 	rebase = false
 [init]
@@ -75,3 +82,20 @@
 	repo = /Users/matt/IdeaProjects/intellij
 [maintenance]
 	repo = /Users/matt/IdeaProjects/intellij
+[rebase]
+	updateRefs = true
+	autoStash = true
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+[help]
+	autocorrect = prompt
